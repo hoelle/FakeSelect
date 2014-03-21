@@ -1,5 +1,5 @@
 /*
- hFakeSelect v0.2
+ hFakeSelect v0.3
  (c) 2014 Hoelle Development e.U. - hoelle.net
  license: http://www.opensource.org/licenses/mit-license.php
  */
@@ -52,7 +52,8 @@
 							$inputDisplay = $('<input />', {
 								type: 'text',
 								name: $select.attr('name') + '_display',
-								class: 'display'
+								class: 'display',
+								placeholder: $select.attr('placeholder')
 							}).css(inputCss),
 							$inputHidden = $('<input />', {
 								type: 'hidden',
@@ -71,7 +72,7 @@
 							$inputHidden.val($selectedOption.attr('value'));
 						});
 
-						if ($preselectedOption.size() === 1) {
+						if (!$select.attr('placeholder') && $preselectedOption.size() === 1) {
 							window.setTimeout(function() {
 								$select.change();
 							}, 200);
