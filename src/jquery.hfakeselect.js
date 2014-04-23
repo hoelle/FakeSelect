@@ -1,5 +1,5 @@
 /*
- hFakeSelect v0.3
+ hFakeSelect v0.4
  (c) 2014 Hoelle Development e.U. - hoelle.net
  license: http://www.opensource.org/licenses/mit-license.php
  */
@@ -48,17 +48,17 @@
 
 						var $container = $('<div class="fake-select" />'),
 							$select = $this.clone().removeClass('fake-select'),
-							$preselectedOption = $select.find('option:selected').eq(0),
+							$preselectedOption = $select.find('option[selected]').eq(0),
 							$inputDisplay = $('<input />', {
 								type: 'text',
 								name: $select.attr('name') + '_display',
 								class: 'display',
 								placeholder: $select.attr('placeholder')
-							}).css(inputCss),
+							}).prop('readonly', true).css(inputCss),
 							$inputHidden = $('<input />', {
 								type: 'hidden',
-								name: $select.attr('name')
-							}).css(inputCss);
+								name: $select.attr('name'),
+							}).prop('readonly', true).css(inputCss);
 
 						$container.addClass($select.attr('class'));
 						$select.addClass('origin').removeAttr('name').css(selectCss);
@@ -72,7 +72,7 @@
 							$inputHidden.val($selectedOption.attr('value'));
 						});
 
-						if (!$select.attr('placeholder') && $preselectedOption.size() === 1) {
+						if ($preselectedOption.size() === 1) {
 							window.setTimeout(function() {
 								$select.change();
 							}, 200);
