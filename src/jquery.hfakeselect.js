@@ -20,7 +20,8 @@
 					inputCss = {
 						display: 'inline-block',
 						position: 'relative',
-						width: '100%'
+						width: '100%',
+						behavior: 'none'
 					},
 					selectCss = {
 						display: 'block',
@@ -33,7 +34,8 @@
 						cursor: 'pointer',
 						border: 0,
 						outline: 0,
-						zIndex: 5
+						zIndex: 5,
+						behavior: 'none'
 					};
 
 				return this.each(function () {
